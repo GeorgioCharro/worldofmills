@@ -1,20 +1,19 @@
 // App.js
-import Header from "./components/Header";
-import SearchBar from "./components/SearchBar";
-import Home from "./pages/Home";
-
+import Header from './components/Header';
+import Home from './pages/Home';
+import MenuBar from './components/MenuBar';
+import SearchBar from './components/SearchBar';
+import Footer from './components/Footer';
+import VideoGallery from './components/VideoGallery';
 function App() {
   return (
-    <div className=" mt-2 ml-2 mr-2 md:ml-20 md:mr-20">
-      
-      
-      <SearchBar />
-      
+    <div className="relative mt-2 ml-2 mr-2 md:ml-20 md:mr-20">
       <Header />
-      
-      <hr className="w-full border md:-mt-6 " />
-      <div className="mt-12"><Home /></div>
-      
+      <SearchBar />
+      <Home />
+      <VideoGallery />
+      <Footer />
+      <MenuBar />
     </div>
   );
 }
