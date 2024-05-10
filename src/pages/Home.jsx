@@ -6,7 +6,11 @@ import FilteringGrain from '../media/png/filtering/grainfilteringline.png';
 import { LanguageContext } from '../contexts/LanguageContext';
 import { useTranslation } from 'react-i18next';
 
+import { useEffect, useState } from 'react';
+
+
 function Home() {
+  const [selectedType, setSelectedType] = useState('Grinder');
   const { t, i18n } = useTranslation();
   const { toggleLanguage } = useContext(LanguageContext);
 
@@ -14,9 +18,11 @@ function Home() {
     toggleLanguage();
     i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en');
   };
+  const handleTypeChange = (type) => {
+    setSelectedType(type);
+  };
 
-  return (
-    <div className="flex mt-12 flex-col md:flex-row justify-evenly m-4 p-4">
+  return (<><div className="flex mt-12 flex-col md:flex-row justify-evenly m-4 p-4">
       <div className='mt-12'>
 
       </div>
@@ -62,7 +68,43 @@ function Home() {
           </div>
         </div>
       </div>
+
+      
     </div>
+    <div className="bg-gray-100 mt-4 ml-2 mr-2 flex-row  rounded-3xl"> 
+       <div className='p-3'>
+
+          <div className="p-12">
+                    <p className="text-2xl font-bold">{t('Machineries we Provide')}</p>
+                    <p className="text-gray-600 mt-2">
+                      {t('Contact us in case you need help with a specific machine')}
+                    </p>
+
+                    <div className="flex gap-2 mt-8 flex-wrap">
+        
+        {['Grinder', 'Feeder', 'Filtering', 'Halawi','Chocolate','Mills','Nuts','Tahina','Thyme and Spices'].map((type) => (
+          <button
+            key={type}
+            className={`px-4 py-2 rounded text-sm text-gray-500 ${selectedType === type ? 'bg-yellow-500 text-white' : ' text-black'} hover:text-gray-800 focus:outline-none transition duration-150`}
+            onClick={() => handleTypeChange(type)}
+          >
+            {type}
+          </button>
+        ))}
+      </div>
+
+
+          </div>
+
+
+       </div>
+        
+
+
+      </div>
+    
+    </>
+    
   );
 }
 
