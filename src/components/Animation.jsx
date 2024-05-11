@@ -1,14 +1,9 @@
-
-import AnimationIcon from '../media/animation/AnimationAsset.svg';
-
 function LoadingAnimation() {
   return (
     <div className="fixed inset-0 bg-white flex items-center justify-center z-50">
-      <img src={AnimationIcon} alt="Loading Animation" className="h-32 w-32 animate-spin" />
+      <div className="h-16 w-16 border-4 border-yellow-500 border-t-transparent rounded-full animate-spin"></div>
     </div>
   );
 }
 
 export default LoadingAnimation;
-
-    
