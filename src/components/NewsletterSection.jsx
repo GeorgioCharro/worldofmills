@@ -9,7 +9,7 @@ function NewsletterSection() {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col md:flex-row mt-7 justify-between items-center p-8 bg-white shadow-lg rounded-lg">
+    <div className="flex flex-col md:flex-row mt-12 justify-between items-center p-8 bg-white shadow-lg rounded-lg">
       {/* Text Section */}
       <div className="flex-1 md:mr-8">
         <h2 className="text-2xl md:text-3xl font-bold mb-4 flex items-center">

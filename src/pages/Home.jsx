@@ -52,23 +52,33 @@ function Home() {
       <Animation />
     ) : (
       <>
+        
         <div className="flex mt-12 flex-col md:flex-row justify-evenly m-4 p-4">
-          <div className="flex-col flex flex-1 md:mr-2 mb-8 md:mb-0 ml-8">
-            <p className="text-4xl md:text-6xl font-bold">{t('Quality Mills Equipment & Tools')}</p>
+          
+        <div className='mt-12'>
+
+        </div>
+          <div className="flex-col flex flex-1 md:mr-2 mb-8 md:mb-0 ml-8 ">
+            <p className="text-4xl md:text-6xl mt-10 font-bold">{t('Quality Mills Equipment & Tools')}</p>
             <p className="text-gray-600 mb-8 mt-4 font-semibold">
               {t('Accompanying us, you have a trip full of experiences. With Chisfis, booking accommodation, resort villas, hotels.')}
             </p>
-            <div className="flex items-center justify-center -ml-12">
-              <button
-                className="bg-yellow-500 text-white px-6 py-3 rounded-full shadow-lg font-semibold hover:bg-yellow-600 transition duration-200"
-                onClick={changeLanguage}
-              >
-                {t('Start your search')}
-              </button>
-            </div>
-          </div>
+                            <div className="relative flex items-center justify-center p-10 -ml-9 ">
+                            
+                            <div className="absolute top-0 left-0 transform md:translate-y-20 md:-translate-x-14  md:size-96 size-56 -translate-y-20 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-50"></div>
+                            <div className="absolute bottom-0 right-0 transform md:translate-y-20 md:-translate-x-14  md:size-96 size-56 -translate-y-20 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-50"></div>
 
-          <div className="md:flex flex-col flex-1 hidden">
+                  {/* Button */}
+                  <button
+                    className="z-10 bg-yellow-500 text-white px-6 py-3 rounded-full shadow-lg font-semibold hover:bg-yellow-600 transition duration-200"
+                  >
+                    Start your search
+                  </button>
+                </div>
+            
+          </div>
+          
+          <div className="md:flex flex-col flex-1 hidden mb-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="col-span-1 row-span-1">
                 <img
@@ -93,6 +103,7 @@ function Home() {
               </div>
             </div>
           </div>
+          
         </div>
 
         <div className="bg-gray-100 mt-4 ml-2 mr-2 flex-row rounded-3xl"> 
@@ -103,7 +114,7 @@ function Home() {
                 {t('Contact us in case you need help with a specific machine')}
               </p>
               <div className="flex gap-2 mt-8 flex-wrap p-3">
-                {['Grinder', 'Feeder', 'Filtering', 'Halawi', 'Chocolate', 'Mills', 'Nuts', 'Tahina', 'Thyme and Spices'].map((type) => (
+                {['Feeder', 'Filtering', 'Halawi', 'Chocolate', 'Mills', 'Nuts', 'Tahina', 'Thyme and Spices'].map((type) => (
                   <button
                     key={type}
                     className={`px-4 py-2 rounded text-sm ${selectedType === type ? 'bg-yellow-500 text-white' : 'text-black'} hover:text-gray-800 focus:outline-none transition duration-150`}
@@ -114,18 +125,15 @@ function Home() {
                 ))}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-
-                {machines.map((machine) => (
-                  <MachineItem
-                    key={machine.id}
-                    machine={machine.data}
-                    name={machine.data.name}
-                  />
-                ))}
-
-
-              </div>
+                <div className="flex flex-wrap -mx-4"> {/* Ensures items wrap and negative margin for gutters */}
+                    {machines.map((machine) => (
+                    <MachineItem
+                      key={machine.id}
+                      machine={machine.data}
+                      name={machine.name}
+                    />
+                  ))}
+                </div>
             </div>
           </div>
         </div>
