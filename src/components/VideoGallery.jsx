@@ -45,7 +45,7 @@ function VideoGallery() {
               }`}
             >
               <PlayArrowIcon className="text-yellow-500" />
-              <span className="ml-2 text-sm font-medium">{t('Video')} {index + 1}</span>
+              <span className="ml-2 text-lg font-medium">{t('Video')} {index + 1}</span>
             </div>
           ))}
         </div>
