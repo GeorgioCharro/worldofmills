@@ -1,3 +1,5 @@
+// App.js
+import React, { useRef } from 'react';
 import Header from './components/Header';
 import Home from './pages/Home';
 import MenuBar from './components/MenuBar';
@@ -9,20 +11,22 @@ import LanguageSwitcher from './components/LanguageSwitcher';
 import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
-  return (
-    <LanguageProvider>
-      <div className="relative mt-2 md:ml-20 md:mr-20">
-        <Header />
-        <LanguageSwitcher />
-        <SearchBar />
-        <Home />
-        <VideoGallery />
-        <NewsletterSection />
-        <Footer />
-        <MenuBar />
-      </div>
-    </LanguageProvider>
-  );
+    const searchClickHandlerRef = useRef(null);
+
+    return (
+        <LanguageProvider>
+            <div className="relative mt-2 md:ml-20 md:mr-20">
+                <Header setSearchOpenRef={searchClickHandlerRef} />
+                <LanguageSwitcher />
+                <SearchBar />
+                <Home searchClickHandlerRef={searchClickHandlerRef} />
+                <VideoGallery />
+                <NewsletterSection />
+                <Footer />
+                <MenuBar />
+            </div>
+        </LanguageProvider>
+    );
 }
 
 export default App;

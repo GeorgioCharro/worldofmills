@@ -17,7 +17,7 @@ function NewsletterSection() {
           <span role="img" aria-label="newsletter" className="ml-2">🎉</span>
         </h2>
         <p className="text-gray-600 mb-8">
-          {t("Message us on WhatsApp to benefit from our consultancy services in starting your machinery business")}
+        {t("Message us on WhatsApp to benefit from our consultancy services in starting your machinery business")}
         </p>
 
         {/* Benefits */}
@@ -32,7 +32,7 @@ function NewsletterSection() {
             <span className="flex justify-center items-center w-8 h-8 rounded-full bg-yellow-500 text-yellow-100 mr-3">
               02
             </span>
-            <span className="text-gray-600">{t('Get premium magazines')}</span>
+            <span className="text-gray-600">{t('Get premium assistance')}</span>
           </li>
         </ul>
 
