@@ -20,9 +20,9 @@ function Footer() {
                 <span className="font-bold text-3xl text-black">WorldofMills</span>
               </div>
             </Typography>
-            <Typography variant="subtitle1">{t('The Best Restaurants in Your Home')}</Typography>
+            <Typography variant="subtitle1">{t('Your Partner in Industrial Machinery Solutions')}</Typography>
             <Typography variant="body2" sx={{ mt: 2 }}>
-              {t('Enjoy fast and reliable food delivery with Alo Tony! We bring your favorite meals right to your doorstep, ensuring every order is handled with care and delivered on time. Experience the convenience of dining at home without compromising on taste.')}
+              {t('Experience excellence in machinery with WorldofMills. We design, manufacture, and deliver high-quality industrial machinery tailored to meet your specific needs. Our commitment to innovation and precision ensures that every machine we produce enhances your productivity and efficiency. Trust WorldofMills to be your reliable partner in achieving operational success and industrial growth.')}
             </Typography>
           </Grid>
 
