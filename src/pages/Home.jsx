@@ -1,17 +1,18 @@
-// Home.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { collection, getDocs, query, where } from "firebase/firestore";
-import {db} from '../firebase.config';
+import { db } from '../firebase.config';
 import { useTranslation } from 'react-i18next';
 import Animation from '../components/Animation';
 import FeedGrinder from '../media/png/animalfeed/feedgrinder.png';
 import ChocolatePump from '../media/png/chocolate/chocolatepump.jpg';
 import FilteringGrain from '../media/png/filtering/grainfilteringline.png';
 import MachineItem from '../components/MachineItem';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 function Home({ searchClickHandlerRef }) {
     const [selectedType, setSelectedType] = useState('Feeder');
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const { language } = useContext(LanguageContext);
     const [machines, setMachines] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -40,7 +41,7 @@ function Home({ searchClickHandlerRef }) {
             }
         };
         fetchMachines();
-    }, [selectedType]);
+    }, [selectedType, language]);
 
     return (
         loading ? (
@@ -104,7 +105,7 @@ function Home({ searchClickHandlerRef }) {
                                 <MachineItem
                                     key={machine.id}
                                     machine={machine.data}
-                                    name={machine.name}
+                                    name={language === 'ar' ? machine.data.machineName_ar : machine.data.machineName}
                                 />
                             ))}
                         </div>
