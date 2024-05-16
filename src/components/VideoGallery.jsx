@@ -1,19 +1,14 @@
-// VideoGallery.js
-import React, { useState } from 'react';
-import ReactPlayer from 'react-player';
+import React from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { useTranslation } from 'react-i18next';
-
-// List of TikTok video URLs (replace with actual URLs)
-const videos = [
-  'https://www.youtube.com/watch?v=Ao7e4iisKMs',
-  'https://www.youtube.com/watch?v=GICl7v-Ulcw',
-  'https://www.youtube.com/watch?v=81oUtxybYLI',
-];
+import TiktokImage from '../media/png/TikTok-Image.png';
 
 function VideoGallery() {
-  const [selectedVideo, setSelectedVideo] = useState(videos[0]);
   const { t } = useTranslation();
+
+  const handleImageClick = () => {
+    window.open('https://www.tiktok.com/@worldofmills1?_t=8mNY2UNYx4C&_r=1', '_blank');
+  };
 
   return (
     <>
@@ -21,33 +16,24 @@ function VideoGallery() {
       <span className="mt-2 md:mt-4 font-normal block text-base sm:text-lg text-neutral-500 dark:text-neutral-400 ml-12">
         {t('Check out our hottest videos. View more and share more new perspectives on just about any topic. Everyone’s welcome.')}
       </span>
-      <div className="flex flex-col md:flex-row items-center md:items-start justify-evenly p-6 bg-white shadow-xl rounded-lg">
+      <div className="flex flex-col md:flex-row items-center md:items-start justify-evenly p-6 ">
+        
+        {/* Video Thumbnails (Placeholder for now) */}
+        
         {/* Main Video Section */}
-        <div className="flex-1 p-4 rounded-lg shadow-md border-yellow-500 border">
-          <ReactPlayer
-            url={selectedVideo}
-            controls
-            playing
-            className="rounded-lg overflow-hidden"
-            width="100%"
-            height="400px"
-          />
-        </div>
-
-        {/* Video Thumbnails */}
-        <div className="flex flex-row md:flex-col mt-4 md:mt-0 md:ml-6 space-x-4 md:space-x-0 md:space-y-4 overflow-x-auto">
-          {videos.map((video, index) => (
-            <div
-              key={index}
-              onClick={() => setSelectedVideo(video)}
-              className={`cursor-pointer flex items-center justify-center p-2 rounded-lg bg-white hover:bg-gray-300 transition duration-150 ease-in-out ${
-                selectedVideo === video ? 'border-2 border-yellow-500' : ''
-              }`}
-            >
-              <PlayArrowIcon className="text-yellow-500" />
-              <span className="ml-2 text-lg font-medium">{t('Video')} {index + 1}</span>
+        <div className="flex p-4  order-0 md:order-1">
+          <div className="mockup-phone border-yellow-500 relative w-80 h-[40rem] mx-auto">
+            <div className="absolute inset-x-0 top-0 w-16 h-1 bg-gray-600 rounded-full mt-2 mx-auto"></div>
+            <div className="absolute inset-x-0 top-4 w-12 h-1 bg-gray-400 rounded-full mx-auto"></div>
+            <div className="relative w-full h-full mt-8 p-4 overflow-hidden rounded-xl flex justify-center items-center">
+              <img
+                src={TiktokImage}
+                alt="TikTok"
+                className="object-contain w-full h-full cursor-pointer"
+                onClick={handleImageClick}
+              />
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </>

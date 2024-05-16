@@ -4,13 +4,13 @@ import {db} from '../firebase.config';
 import SearchIcon from '@mui/icons-material/Search';
 import TuneIcon from '@mui/icons-material/Tune';
 import SearchResult from './SearchResult';
-
+import { useTranslation } from 'react-i18next';
 
 function SearchBar() {
   const [input, setInput] = useState('');
   const [results, setResults] = useState([]);
   const searchBarRef = useRef(null);
-
+const { t } = useTranslation();
   useEffect(() => {
     const handleScroll = (state) => {
       document.body.style.overflow = state ? 'hidden' : 'auto';
@@ -64,7 +64,7 @@ function SearchBar() {
           <SearchIcon className="cursor-pointer text-gray-600" sx={{ fontSize: 24 }} />
           <input
             type="text"
-            placeholder="Write the name of the machine"
+            placeholder={t('Write the name of the machine')}
             className="w-full bg-transparent outline-none  font-bold placeholder-gray-500"
             onChange={handleInputChange}
             value={input}

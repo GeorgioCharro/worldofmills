@@ -5,8 +5,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {useTranslation} from 'react-i18next';
 function MenuBar() {
   const [isVisible, setIsVisible] = useState(true);
+  const { t } = useTranslation();
   let lastScrollY = 0;
 
   const controlMenuBar = () => {
@@ -40,7 +42,7 @@ function MenuBar() {
         <IconButton>
           <SearchIcon className="text-gray-500" sx={{ fontSize: 28 }} />
         </IconButton>
-        <span className="text-xs text-gray-600">Explore</span>
+        <span className="text-xs text-gray-600">{t('Explore')}</span>
       </div>
       </Link>
       <Link to={'/profile'}>
@@ -49,7 +51,7 @@ function MenuBar() {
         <IconButton>
           <AccountCircleIcon className="text-gray-500" sx={{ fontSize: 28 }} />
         </IconButton>
-        <span className="text-xs text-gray-600">Profile</span>
+        <span className="text-xs text-gray-600">{t('Profile')}</span>
       </div>
       </Link>
 
@@ -58,7 +60,7 @@ function MenuBar() {
         <IconButton>
           <MenuIcon className="text-gray-600" sx={{ fontSize: 28 }} />
         </IconButton>
-        <span className="text-xs text-gray-600">Menu</span>
+        <span className="text-xs text-gray-600">{t('Menu')}</span>
       </div>
     </div>
   );

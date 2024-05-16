@@ -43,6 +43,8 @@ function Home({ searchClickHandlerRef }) {
         fetchMachines();
     }, [selectedType, language]);
 
+    const machineTypes = ['Feeder', 'Filtering', 'Halawi', 'Chocolate', 'Mills', 'Nuts', 'Tahina', 'Thyme and Spices'];
+
     return (
         loading ? (
             <Animation />
@@ -89,13 +91,13 @@ function Home({ searchClickHandlerRef }) {
                             {t('Contact us in case you need help with a specific machine')}
                         </p>
                         <div className="flex gap-2 mt-8 flex-wrap justify-center font-bold">
-                            {['Feeder', 'Filtering', 'Halawi', 'Chocolate', 'Mills', 'Nuts', 'Tahina', 'Thyme and Spices'].map((type) => (
+                            {machineTypes.map((type) => (
                                 <button
                                     key={type}
                                     className={`px-4 py-2 rounded text-lg ${selectedType === type ? 'bg-yellow-500 text-white rounded-full' : 'text-black'} hover:text-gray-800 focus:outline-none transition duration-150`}
                                     onClick={() => handleTypeChange(type)}
                                 >
-                                    {type}
+                                    {t(type)}
                                 </button>
                             ))}
                         </div>

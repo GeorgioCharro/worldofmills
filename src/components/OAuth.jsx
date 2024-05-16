@@ -8,7 +8,7 @@ import { db } from '../firebase.config';
 function OAuth() {
   const navigate = useNavigate();
   const location = useLocation();
-  const allowedEmails = ["giov436@gmail.com", "allowed.email2@example.com"]; // Replace with the allowed emails
+  const allowedEmails = ["giov436@gmail.com", "hasanhilani22@gmail.com"]; // Replace with the allowed emails
 
   const onGoogleClick = async () => {
     try {
