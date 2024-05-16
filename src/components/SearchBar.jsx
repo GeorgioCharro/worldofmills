@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import db from '../firebase.config';
+import {db} from '../firebase.config';
 import SearchIcon from '@mui/icons-material/Search';
 import TuneIcon from '@mui/icons-material/Tune';
 import SearchResult from './SearchResult';
+
 
 function SearchBar() {
   const [input, setInput] = useState('');

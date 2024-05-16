@@ -1,11 +1,13 @@
 // Header.js
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import WorldofMills from '../media/png/Logo.png';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import db from '../firebase.config';
+import {db} from '../firebase.config';
 import SearchResult from './SearchResult';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'; // Import AccountCircle icon
 
 function Header({ setSearchOpenRef }) {
     const [input, setInput] = useState('');
@@ -101,6 +103,11 @@ function Header({ setSearchOpenRef }) {
                     
                     </label>
                 </IconButton>
+                <Link to="/profile">
+                    <IconButton>
+                        <AccountCircleIcon className="cursor-pointer" sx={{ fontSize: 30 }} />
+                    </IconButton>
+                </Link>
             </div>
         </div>
     );

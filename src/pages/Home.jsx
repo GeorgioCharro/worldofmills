@@ -1,7 +1,7 @@
 // Home.js
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, query, where } from "firebase/firestore";
-import db from '../firebase.config';
+import {db} from '../firebase.config';
 import { useTranslation } from 'react-i18next';
 import Animation from '../components/Animation';
 import FeedGrinder from '../media/png/animalfeed/feedgrinder.png';
