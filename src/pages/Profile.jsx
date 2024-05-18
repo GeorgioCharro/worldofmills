@@ -52,7 +52,6 @@ function Profile() {
       }
     } catch (error) {
       toast.error('Could not update profile details');
-      console.log(error);
     }
   };
 
@@ -81,28 +80,12 @@ function Profile() {
   const storeImage = async (image) => {
     return new Promise((resolve, reject) => {
       const fileName = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`;
-
       const storageRef = ref(storage, 'images/' + fileName);
-
       const uploadTask = uploadBytesResumable(storageRef, image);
 
       uploadTask.on(
         'state_changed',
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload is ' + progress + '% done');
-          switch (snapshot.state) {
-            case 'paused':
-              console.log('Upload is paused');
-              break;
-            case 'running':
-              console.log('Upload is running');
-              break;
-            default:
-              break;
-          }
-        },
+        null,
         (error) => {
           reject(error);
         },
@@ -146,7 +129,6 @@ function Profile() {
         imgFiles: []
       });
     } catch (error) {
-      console.error('Error adding machine: ', error);
       toast.error('Error adding machine');
     }
   };

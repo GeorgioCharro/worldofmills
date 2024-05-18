@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import SignIn from './pages/SignIn';
 import PrivateRoute from './components/PrivateRoute';
 import Profile from './pages/Profile';
+import Menu from './pages/Menu';
 
 function App() {
   const searchClickHandlerRef = useRef(null);
@@ -42,6 +43,9 @@ function App() {
           <Route path='/profile' element={<PrivateRoute />}>
             <Route path='/profile' element={<Profile />} />
 
+         </Route>
+         <Route>
+            <Route path='/menu' element={<Menu />} />
          </Route>
         </Routes>
       </Router>

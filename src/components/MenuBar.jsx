@@ -54,13 +54,16 @@ function MenuBar() {
       </Link>
 
       {/* Menu Icon */}
+      <Link to={'/menu'}>
       <div className="flex flex-col items-center">
         <IconButton>
           <MenuIcon className="text-gray-600" sx={{ fontSize: 28 }} />
         </IconButton>
         <span className="text-xs text-gray-600">{t('Menu')}</span>
       </div>
+      </Link>
     </div>
+     
   );
 }
 

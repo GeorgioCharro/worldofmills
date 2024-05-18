@@ -1,5 +1,4 @@
 import React from 'react';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { useTranslation } from 'react-i18next';
 import TiktokImage from '../media/png/TikTok-Image.png';
 

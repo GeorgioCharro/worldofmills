@@ -36,7 +36,7 @@ function Home({ searchClickHandlerRef }) {
                 setMachines(machines);
                 setLoading(false);
             } catch (error) {
-                console.error("Error fetching machines: ", error);
+                
                 setLoading(false);
             }
         };
