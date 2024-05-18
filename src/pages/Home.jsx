@@ -11,7 +11,7 @@ import { LanguageContext } from '../contexts/LanguageContext';
 
 function Home({ searchClickHandlerRef }) {
     const [selectedType, setSelectedType] = useState('Feeder');
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const { language } = useContext(LanguageContext);
     const [machines, setMachines] = useState(null);
     const [loading, setLoading] = useState(true);
