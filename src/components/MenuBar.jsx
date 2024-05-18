@@ -1,25 +1,25 @@
-// MenuBar.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
+
 function MenuBar() {
   const [isVisible, setIsVisible] = useState(true);
   const { t } = useTranslation();
-  let lastScrollY = 0;
+  const lastScrollY = useRef(0);
 
   const controlMenuBar = () => {
-    if (window.scrollY > lastScrollY) {
+    if (window.scrollY > lastScrollY.current) {
       // Scrolling down
       setIsVisible(false);
     } else {
       // Scrolling up
       setIsVisible(true);
     }
-    lastScrollY = window.scrollY;
+    lastScrollY.current = window.scrollY;
   };
 
   useEffect(() => {
@@ -37,22 +37,20 @@ function MenuBar() {
     >
       {/* Explore Icon */}
       <Link to={'/'}>
-      <div className="flex flex-col items-center">
-        
-        <IconButton>
-          <SearchIcon className="text-gray-500" sx={{ fontSize: 28 }} />
-        </IconButton>
-        <span className="text-xs text-gray-600">{t('Explore')}</span>
-      </div>
+        <div className="flex flex-col items-center">
+          <IconButton>
+            <SearchIcon className="text-gray-500" sx={{ fontSize: 28 }} />
+          </IconButton>
+          <span className="text-xs text-gray-600">{t('Explore')}</span>
+        </div>
       </Link>
       <Link to={'/profile'}>
-      <div className="flex flex-col items-center">
-        
-        <IconButton>
-          <AccountCircleIcon className="text-gray-500" sx={{ fontSize: 28 }} />
-        </IconButton>
-        <span className="text-xs text-gray-600">{t('Profile')}</span>
-      </div>
+        <div className="flex flex-col items-center">
+          <IconButton>
+            <AccountCircleIcon className="text-gray-500" sx={{ fontSize: 28 }} />
+          </IconButton>
+          <span className="text-xs text-gray-600">{t('Profile')}</span>
+        </div>
       </Link>
 
       {/* Menu Icon */}
