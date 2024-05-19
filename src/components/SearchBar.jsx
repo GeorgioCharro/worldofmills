@@ -1,18 +1,28 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext, forwardRef, useImperativeHandle } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import SearchIcon from '@mui/icons-material/Search';
-import TuneIcon from '@mui/icons-material/Tune';
 import SearchResult from './SearchResult';
 import { useTranslation } from 'react-i18next';
 import { LanguageContext } from '../contexts/LanguageContext';
 
-function SearchBar() {
+const SearchBar = forwardRef((props, ref) => {
   const [input, setInput] = useState('');
   const [results, setResults] = useState([]);
+  const [placeholderVisible, setPlaceholderVisible] = useState(true);
   const searchBarRef = useRef(null);
+  const inputRef = useRef(null);
   const { t } = useTranslation();
   const { language } = useContext(LanguageContext);
+
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current.focus();
+    },
+    clearPlaceholder: () => {
+      setPlaceholderVisible(false);
+    }
+  }));
 
   useEffect(() => {
     const handleScroll = (state) => {
@@ -48,6 +58,7 @@ function SearchBar() {
       if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
         setResults([]);
         setInput('');
+        setPlaceholderVisible(true);
       }
     };
 
@@ -67,13 +78,16 @@ function SearchBar() {
         <div className="border pt-3 pb-3 pl-4 pr-4 rounded-full items-center justify-evenly flex shadow-xl w-full space-x-3">
           <SearchIcon className="cursor-pointer text-gray-600" sx={{ fontSize: 24 }} />
           <input
+            ref={inputRef}
             type="text"
-            placeholder={t('Start Your Search e.g. Sesame Machine')}
+            placeholder={placeholderVisible ? t('Start Your Search e.g. Sesame Machine') : ''}
             className="w-full bg-transparent outline-none font-bold placeholder-gray-500"
             onChange={handleInputChange}
             value={input}
+            onFocus={() => setPlaceholderVisible(false)}
+            onBlur={() => input === '' && setPlaceholderVisible(true)}
           />
-          <TuneIcon className="cursor-pointer text-gray-600 ml-auto" sx={{ fontSize: 24 }} />
+          
         </div>
       </div>
       {results.length > 0 && (
@@ -85,6 +99,6 @@ function SearchBar() {
       )}
     </div>
   );
-}
+});
 
 export default SearchBar;
