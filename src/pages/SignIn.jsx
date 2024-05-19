@@ -65,7 +65,7 @@ function SignIn() {
                   type="email"
                   name="email"
                   value={email}
-                  placeholder="giocharro@hotmail.com"
+                  placeholder="example@hotmail.com"
                 />
               </div>
               <div>

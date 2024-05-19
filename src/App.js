@@ -1,6 +1,5 @@
-// App.js
 import React, { useRef } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Router, Route, Routes
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import MenuBar from './components/MenuBar';
@@ -42,11 +41,8 @@ function App() {
           <Route path="/sign-in" element={<SignIn />} />
           <Route path='/profile' element={<PrivateRoute />}>
             <Route path='/profile' element={<Profile />} />
-
-         </Route>
-         <Route>
-            <Route path='/menu' element={<Menu />} />
-         </Route>
+          </Route>
+          <Route path='/menu' element={<Menu />} />
         </Routes>
       </Router>
       <ToastContainer />

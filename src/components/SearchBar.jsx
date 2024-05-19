@@ -1,42 +1,46 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import {db} from '../firebase.config';
+import { db } from '../firebase.config';
 import SearchIcon from '@mui/icons-material/Search';
 import TuneIcon from '@mui/icons-material/Tune';
 import SearchResult from './SearchResult';
 import { useTranslation } from 'react-i18next';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 function SearchBar() {
   const [input, setInput] = useState('');
   const [results, setResults] = useState([]);
   const searchBarRef = useRef(null);
-const { t } = useTranslation();
+  const { t } = useTranslation();
+  const { language } = useContext(LanguageContext);
+
   useEffect(() => {
     const handleScroll = (state) => {
       document.body.style.overflow = state ? 'hidden' : 'auto';
     };
 
-    if (input !== '') {
-      handleScroll(true); // Disable scrolling when there are inputs
-      const fetchResults = async () => {
-        const q = query(collection(db, 'machines'), where('machineName', '>=', input));
+    const fetchResults = async () => {
+      if (input !== '') {
+        handleScroll(true); // Disable scrolling when there are inputs
+        const fieldName = language === 'ar' ? 'machineName_ar' : 'machineName';
+        const q = query(collection(db, 'machines'), where(fieldName, '>=', input));
         const querySnapshot = await getDocs(q);
         const fetchedResults = [];
         querySnapshot.forEach((doc) => {
           fetchedResults.push({ id: doc.id, data: doc.data() });
         });
         setResults(fetchedResults);
-      };
+      } else {
+        handleScroll(false); // Enable scrolling when input is empty
+        setResults([]);
+      }
+    };
 
-      fetchResults();
-    } else {
-      handleScroll(false); // Enable scrolling when input is empty
-      setResults([]);
-    }
+    fetchResults();
 
     // Cleanup to enable scrolling when component unmounts
     return () => handleScroll(false);
-  }, [input]);
+  }, [input, language]);
 
   // Handle outside clicks to close the search results
   useEffect(() => {
@@ -58,14 +62,14 @@ const { t } = useTranslation();
   };
 
   return (
-    <div ref={searchBarRef} className=' bg-white/70 backdrop-blur-md flex  w-full top-0 px-4 py-2 z-50 fixed md:hidden'>
-      <div className=" items-center w-full p-4 max-w-4xl mx-auto  md:hidden text-center flex">
-        <div className="border pt-3 pb-3 pl-4 pr-4 rounded-full items-center justify-evenly flex shadow-xl w-full  space-x-3">
+    <div ref={searchBarRef} className='bg-white/70 backdrop-blur-md flex w-full top-0 px-4 py-2 z-50 fixed md:hidden'>
+      <div className="items-center w-full p-4 max-w-4xl mx-auto md:hidden text-center flex">
+        <div className="border pt-3 pb-3 pl-4 pr-4 rounded-full items-center justify-evenly flex shadow-xl w-full space-x-3">
           <SearchIcon className="cursor-pointer text-gray-600" sx={{ fontSize: 24 }} />
           <input
             type="text"
-            placeholder={t('Write the name of the machine')}
-            className="w-full bg-transparent outline-none  font-bold placeholder-gray-500"
+            placeholder={t('Start Your Search e.g. Sesame Machine')}
+            className="w-full bg-transparent outline-none font-bold placeholder-gray-500"
             onChange={handleInputChange}
             value={input}
           />
@@ -75,7 +79,7 @@ const { t } = useTranslation();
       {results.length > 0 && (
         <div className="absolute top-full left-0 w-full bg-white bg-white/70 backdrop-blur-md p-4 shadow-xl overflow-y-auto max-h-80">
           {results.map((machine) => (
-            <SearchResult key={machine.id} machine={machine.data} />
+            <SearchResult key={machine.id} machine={machine.data} language={language} />
           ))}
         </div>
       )}

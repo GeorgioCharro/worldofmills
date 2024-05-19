@@ -34,6 +34,7 @@ function MenuBar() {
       className={`fixed bottom-0 w-full flex justify-evenly items-center py-2 px-8 bg-white shadow-md md:hidden transition-transform duration-300 ease-in-out z-50 ${
         isVisible ? 'translate-y-0' : 'translate-y-full'
       }`}
+      style={{ height: '56px', transform: isVisible ? 'translateY(0)' : 'translateY(100%)' }}
     >
       {/* Explore Icon */}
       <Link to={'/'}>
@@ -55,15 +56,14 @@ function MenuBar() {
 
       {/* Menu Icon */}
       <Link to={'/menu'}>
-      <div className="flex flex-col items-center">
-        <IconButton>
-          <MenuIcon className="text-gray-600" sx={{ fontSize: 28 }} />
-        </IconButton>
-        <span className="text-xs text-gray-600">{t('Menu')}</span>
-      </div>
+        <div className="flex flex-col items-center">
+          <IconButton>
+            <MenuIcon className="text-gray-600" sx={{ fontSize: 28 }} />
+          </IconButton>
+          <span className="text-xs text-gray-600">{t('Menu')}</span>
+        </div>
       </Link>
     </div>
-     
   );
 }
 

@@ -1,4 +1,3 @@
-// NewsletterSection.js
 import React from 'react';
 import Infographic from '../media/png/Chart.png';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -9,15 +8,15 @@ function NewsletterSection() {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col md:flex-row mt-12 justify-between items-center p-8 bg-white shadow-lg rounded-lg">
+    <div className="flex flex-col md:flex-row mt-12 p-8 bg-white shadow-lg rounded-lg">
       {/* Text Section */}
-      <div className="flex-1 md:mr-8">
+      <div className="flex-1 md:mr-4">
         <h2 className="text-2xl md:text-3xl font-bold mb-4 flex items-center">
           {t('Message us on WhatsApp')}
           <span role="img" aria-label="newsletter" className="ml-2">🎉</span>
         </h2>
         <p className="text-gray-600 mb-8">
-        {t("Message us on WhatsApp to benefit from our consultancy services in starting your machinery business")}
+          {t("Message us on WhatsApp to benefit from our consultancy services in starting your machinery business")}
         </p>
 
         {/* Benefits */}
@@ -51,7 +50,7 @@ function NewsletterSection() {
       </div>
 
       {/* Infographic Section */}
-      <div className="flex-1 mt-8 md:mt-0 ml-6">
+      <div className="flex-1 mt-8 md:mt-0 md:ml-4">
         <img src={Infographic} alt="Infographic" className="max-w-full h-auto" />
       </div>
     </div>

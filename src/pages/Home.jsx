@@ -36,7 +36,6 @@ function Home({ searchClickHandlerRef }) {
                 setMachines(machines);
                 setLoading(false);
             } catch (error) {
-                
                 setLoading(false);
             }
         };
@@ -86,7 +85,7 @@ function Home({ searchClickHandlerRef }) {
 
                 <div className="bg-gray-100 mt-4 ml-2 mr-2 flex-row rounded-3xl flex justify-center items-center">
                     <div className='w-full max-w-4xl p-8'>
-                        <p className="text-3xl font-bold text-center ">{t('Machineries we Provide')}</p>
+                        <p className="text-3xl font-bold text-center ">{t('Machineries We Provide')}</p>
                         <p className="text-gray-600 text-lg mt-2 text-center">
                             {t('Contact us in case you need help with a specific machine')}
                         </p>

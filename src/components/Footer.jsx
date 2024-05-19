@@ -46,25 +46,29 @@ function Footer() {
               {t('Location')}
             </Typography>
             <Typography variant="body2" gutterBottom>
-              worldofmills0@gmail.com
+              <Link href="mailto:worldofmills0@gmail.com" color="inherit">
+                worldofmills0@gmail.com
+              </Link>
             </Typography>
             <Typography variant="body2" gutterBottom>
               +971 52 621 1664
             </Typography>
-            <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
+              <InstagramIcon />
               <Link
                 href="https://www.instagram.com/_worldofmills_/"
                 color="inherit"
-                sx={{ ml: 2 }}
+                sx={{ ml: 1, mr: 4 }}
               >
-                <InstagramIcon />
+                Instagram
               </Link>
+              <WhatsAppIcon />
               <Link
                 href="https://api.whatsapp.com/send/?phone=971526211664&text&type=phone_number&app_absent=0"
                 color="inherit"
-                sx={{ ml: 2 }}
+                sx={{ ml: 1 }}
               >
-                <WhatsAppIcon />
+                WhatsApp
               </Link>
             </Box>
           </Grid>

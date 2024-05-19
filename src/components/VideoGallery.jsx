@@ -35,7 +35,7 @@ function VideoGallery() {
                     </div>
 
         {/* Main Video Section */}
-        <div className="flex p-4 order-0 md:order-1">
+        <div className="flex p-4 items-center order-0 md:order-1">
           <div className="mockup-phone border-yellow-500 relative w-80 h-[40rem] mx-auto">
             <div className="absolute inset-x-0 top-0 w-16 h-1 bg-gray-600 rounded-full mt-2 mx-auto"></div>
             <div className="absolute inset-x-0 top-4 w-12 h-1 bg-gray-400 rounded-full mx-auto"></div>
