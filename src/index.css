@@ -39,3 +39,15 @@ body {
       color-scheme: light;
   }
 }
+
+.menu-bar {
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu-bar.show {
+  transform: translateY(0);
+}
+
+.menu-bar.hide {
+  transform: translateY(100%);
+}

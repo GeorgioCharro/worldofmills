@@ -31,10 +31,10 @@ function MenuBar() {
 
   return (
     <div
-      className={`fixed bottom-0 w-full flex justify-evenly items-center py-2 px-8 bg-white shadow-md md:hidden transition-transform duration-300 ease-in-out z-50 ${
-        isVisible ? 'translate-y-0' : 'translate-y-full'
+      className={`fixed bottom-0 w-full flex justify-evenly items-center py-2 px-4 bg-white shadow-md md:hidden z-50 menu-bar ${
+        isVisible ? 'show' : 'hide'
       }`}
-      style={{ height: '56px', transform: isVisible ? 'translateY(0)' : 'translateY(100%)' }}
+      style={{ height: '56px' }}
     >
       {/* Explore Icon */}
       <Link to={'/'}>
