@@ -1,7 +1,7 @@
 import OAuth from '../components/OAuth';
 import { toast } from 'react-toastify';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
@@ -80,11 +80,7 @@ function SignIn() {
                   placeholder="******"
                 />
               </div>
-              <div className="flex">
-                <div className="w-1/2">
-                  <Link to='/forgot-password' className="font-bold text-yellow-600">Forgot password?</Link>
-                </div>
-              </div>
+              
               <div>
                 <button
                   className="bg-yellow-500 hover:bg-yellow-600 w-full py-2 rounded-md text-white font-bold cursor-pointer"
