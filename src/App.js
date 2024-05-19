@@ -17,20 +17,24 @@ import Profile from './pages/Profile';
 import Menu from './pages/Menu';
 
 function App() {
-  const searchClickHandlerRef = useRef(null);
+  const searchBarRef = useRef(null);
+  const headerSearchOpenRef = useRef(null);
 
   return (
     <LanguageProvider>
       <Router>
+        <Header setSearchOpenRef={headerSearchOpenRef} />
+        <SearchBar ref={searchBarRef} />
         <Routes>
           <Route
             path="/"
             element={
               <>
-                <Header setSearchOpenRef={searchClickHandlerRef} />
                 <LanguageSwitcher />
-                <SearchBar />
-                <Home searchClickHandlerRef={searchClickHandlerRef} />
+                <Home
+                  searchBarRef={searchBarRef}
+                  headerSearchOpenRef={headerSearchOpenRef}
+                />
                 <VideoGallery />
                 <NewsletterSection />
                 <Footer />
@@ -44,8 +48,8 @@ function App() {
           </Route>
           <Route path='/menu' element={<Menu />} />
         </Routes>
+        <ToastContainer />
       </Router>
-      <ToastContainer />
     </LanguageProvider>
   );
 }

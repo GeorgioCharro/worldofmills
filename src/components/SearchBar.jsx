@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext, forwardRef, useImperati
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import SearchIcon from '@mui/icons-material/Search';
+import TuneIcon from '@mui/icons-material/Tune';
 import SearchResult from './SearchResult';
 import { useTranslation } from 'react-i18next';
 import { LanguageContext } from '../contexts/LanguageContext';
@@ -87,7 +88,7 @@ const SearchBar = forwardRef((props, ref) => {
             onFocus={() => setPlaceholderVisible(false)}
             onBlur={() => input === '' && setPlaceholderVisible(true)}
           />
-          
+          <TuneIcon className="cursor-pointer text-gray-600 ml-auto" sx={{ fontSize: 24 }} />
         </div>
       </div>
       {results.length > 0 && (

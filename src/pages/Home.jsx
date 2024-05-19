@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from '../firebase.config';
 import { useTranslation } from 'react-i18next';
@@ -8,15 +8,13 @@ import ChocolatePump from '../media/png/chocolate/chocolatepump.jpg';
 import FilteringGrain from '../media/png/filtering/grainfilteringline.png';
 import MachineItem from '../components/MachineItem';
 import { LanguageContext } from '../contexts/LanguageContext';
-import SearchBar from '../components/SearchBar';
 
-function Home({ searchClickHandlerRef }) {
+function Home({ searchBarRef, headerSearchOpenRef }) {
   const [selectedType, setSelectedType] = useState('Feeder');
   const { t } = useTranslation();
   const { language } = useContext(LanguageContext);
   const [machines, setMachines] = useState(null);
   const [loading, setLoading] = useState(true);
-  const searchBarRef = useRef(null);
 
   const handleTypeChange = (type) => {
     setSelectedType(type);
@@ -51,7 +49,6 @@ function Home({ searchClickHandlerRef }) {
       <Animation />
     ) : (
       <>
-        <SearchBar ref={searchBarRef} />
         <div className="flex mt-12 flex-col md:flex-row justify-evenly m-4 p-4">
           <div className="flex-col flex flex-1 md:mr-2 mb-8 md:mb-0 ml-8 ">
             <p className="text-4xl md:text-6xl mt-10 font-bold">{t('Quality Mills Equipment & Tools')}</p>
@@ -65,9 +62,15 @@ function Home({ searchClickHandlerRef }) {
               <button
                 className="z-10 bg-yellow-500 text-white px-6 py-3 rounded-full shadow-lg font-semibold hover:bg-yellow-600 transition duration-200"
                 onClick={() => {
-                  if (searchBarRef.current) {
-                    searchBarRef.current.focus();
-                    searchBarRef.current.clearPlaceholder();
+                  if (window.innerWidth < 768) { // Small screens
+                    if (searchBarRef.current) {
+                      searchBarRef.current.focus();
+                      searchBarRef.current.clearPlaceholder();
+                    }
+                  } else { // Larger screens
+                    if (headerSearchOpenRef.current) {
+                      headerSearchOpenRef.current();
+                    }
                   }
                 }}
               >

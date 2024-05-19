@@ -74,6 +74,7 @@ function Header({ setSearchOpenRef }) {
               className="transition-all duration-300 outline-none border p-2 rounded w-64"
               onChange={handleInputChange}
               value={input}
+              autoFocus // Ensures the input field is focused when opened
             />
           )}
           {searchOpen && results.length > 0 && (
